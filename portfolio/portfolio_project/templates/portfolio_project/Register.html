@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+	<section id="form"><!--form-->
+		<div class="container">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>{{ auth }}</h2>
+						<form method="post">
+							{% csrf_token %}
+							{{ form.non_field_errors }}
+							{% for f in form %}
+								{{ f }}
+								{{ f.errors }}
+							{% endfor %}
+							<button type="submit" class="btn btn-default">{{ action }}</button>
+						</form>
+					</div><!--/login form-->
+			</div>
+		</div>
+	</section><!--/form-->
+{% endblock %}
